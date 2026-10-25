@@ -1,6 +1,6 @@
 {
-  "name": "Universal AI Assistant",
-  "description": "JARVIS AI Core HUD interface with AI conversations, high thinking mode, system monitoring, and device telemetry.",
+  "name": "RAYA - Universal AI Assistant",
+  "description": "RAYA AI Core HUD interface with AI conversations, high thinking mode, system monitoring, and device telemetry.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

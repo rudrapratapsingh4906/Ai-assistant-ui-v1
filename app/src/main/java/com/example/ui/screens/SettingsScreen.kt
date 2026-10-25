@@ -1,6 +1,7 @@
 package com.example.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,13 +24,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ui.components.SciFiHudPanel
-import com.example.ui.theme.CyanGlow
-import com.example.ui.theme.DarkBackground
-import com.example.ui.theme.DarkSurface
 import com.example.ui.theme.ElectricPurple
+import com.example.ui.theme.DarkBackground
 import com.example.ui.theme.TextMuted
 import com.example.ui.theme.TextPrimary
-import com.example.ui.theme.TextSecondary
 import com.example.viewmodel.JarvisViewModel
 
 @Composable
@@ -47,70 +45,81 @@ fun SettingsScreen(
             .fillMaxSize()
             .verticalScroll(scrollState)
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text(
-            text = "JARVIS CORE CONFIGURATION",
-            style = MaterialTheme.typography.titleLarge.copy(
-                fontWeight = FontWeight.Bold,
-                color = TextPrimary,
-                fontSize = 16.sp,
-                letterSpacing = 1.2.sp
-            )
-        )
-        Text(
-            text = "System Preferences & Neural Model Settings",
-            style = MaterialTheme.typography.bodySmall.copy(color = TextMuted, fontSize = 11.sp)
-        )
-
-        SciFiHudPanel(
-            modifier = Modifier.fillMaxWidth(),
-            glowColor = ElectricPurple
-        ) {
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text(
-                    text = "NEURAL COGNITION ENGINE",
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.Bold,
-                        color = TextPrimary,
-                        fontSize = 12.sp
-                    )
+        Column {
+            Text(
+                text = "RAYA CORE CONFIGURATION",
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = TextPrimary,
+                    fontSize = 16.sp,
+                    letterSpacing = 1.2.sp
                 )
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = "Gemini 4 Argon High Thinking Mode",
-                            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold, color = TextPrimary, fontSize = 12.sp)
-                        )
-                        Text(
-                            text = "Enables ThinkingLevel.HIGH for complex reasoning",
-                            style = MaterialTheme.typography.bodySmall.copy(color = TextMuted, fontSize = 10.sp)
-                        )
-                    }
-
-                    Switch(
-                        checked = highThinking,
-                        onCheckedChange = { viewModel.toggleHighThinkingMode(it) },
-                        colors = SwitchDefaults.colors(
-                            checkedThumbColor = DarkBackground,
-                            checkedTrackColor = ElectricPurple
-                        )
-                    )
-                }
-            }
+            )
+            Text(
+                text = "System Preferences & Neural Model Settings",
+                style = MaterialTheme.typography.bodySmall.copy(color = TextMuted, fontSize = 11.sp)
+            )
         }
 
-        VoiceAiCard(
-            settings = voiceSettings,
-            onWakeWordToggle = { viewModel.toggleWakeWord(it) },
-            onVoiceResponseToggle = { viewModel.toggleVoiceResponse(it) },
-            onOfflineModeToggle = { viewModel.toggleOfflineMode(it) },
-            onLocalProcessingToggle = { viewModel.toggleLocalProcessing(it) }
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Box(modifier = Modifier.weight(1f)) {
+                SciFiHudPanel(
+                    modifier = Modifier.fillMaxWidth(),
+                    glowColor = ElectricPurple
+                ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                        Text(
+                            text = "NEURAL COGNITION ENGINE",
+                            style = MaterialTheme.typography.titleMedium.copy(
+                                fontWeight = FontWeight.Bold,
+                                color = TextPrimary,
+                                fontSize = 12.sp
+                            )
+                        )
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    text = "Gemini 4 Argon High Thinking Mode",
+                                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold, color = TextPrimary, fontSize = 12.sp)
+                                )
+                                Text(
+                                    text = "Enables ThinkingLevel.HIGH for complex reasoning",
+                                    style = MaterialTheme.typography.bodySmall.copy(color = TextMuted, fontSize = 10.sp)
+                                )
+                            }
+
+                            Switch(
+                                checked = highThinking,
+                                onCheckedChange = { viewModel.toggleHighThinkingMode(it) },
+                                colors = SwitchDefaults.colors(
+                                    checkedThumbColor = DarkBackground,
+                                    checkedTrackColor = ElectricPurple
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+
+            Box(modifier = Modifier.weight(1f)) {
+                VoiceAiCard(
+                    settings = voiceSettings,
+                    onWakeWordToggle = { viewModel.toggleWakeWord(it) },
+                    onVoiceResponseToggle = { viewModel.toggleVoiceResponse(it) },
+                    onOfflineModeToggle = { viewModel.toggleOfflineMode(it) },
+                    onLocalProcessingToggle = { viewModel.toggleLocalProcessing(it) }
+                )
+            }
+        }
     }
 }

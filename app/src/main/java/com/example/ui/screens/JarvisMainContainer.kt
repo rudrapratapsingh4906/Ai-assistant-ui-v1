@@ -77,82 +77,19 @@ fun JarvisMainContainer(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            val isWideScreen = maxWidth > 720.dp
+            // Landscape First Layout: Left Navigation Rail Sidebar + Main Content Area
+            Row(modifier = Modifier.fillMaxSize()) {
+                JarvisSidebar(
+                    currentScreen = currentScreen,
+                    onScreenSelect = { viewModel.navigateTo(it) }
+                )
 
-            if (isWideScreen) {
-                // Expanded Screen: Sidebar on Left, Screen Content on Right
-                Row(modifier = Modifier.fillMaxSize()) {
-                    JarvisSidebar(
-                        currentScreen = currentScreen,
-                        onScreenSelect = { viewModel.navigateTo(it) }
-                    )
-
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .fillMaxSize()
-                    ) {
-                        ScreenContent(currentScreen = currentScreen, viewModel = viewModel, isExpanded = true)
-                    }
-                }
-            } else {
-                // Compact Screen: Content with Bottom Navigation Bar
-                Column(modifier = Modifier.fillMaxSize()) {
-                    Box(modifier = Modifier.weight(1f)) {
-                        ScreenContent(currentScreen = currentScreen, viewModel = viewModel, isExpanded = false)
-                    }
-
-                    // Compact Mobile Bottom Navigation Bar
-                    NavigationBar(
-                        containerColor = DarkSurface,
-                        contentColor = TextPrimary,
-                        tonalElevation = 8.dp
-                    ) {
-                        val mobileTabs = listOf(
-                            HudScreen.HOME,
-                            HudScreen.CHAT,
-                            HudScreen.VOICE,
-                            HudScreen.TOOLS,
-                            HudScreen.SETTINGS
-                        )
-
-                        mobileTabs.forEach { screen ->
-                            val selected = screen == currentScreen
-                            val icon = when (screen) {
-                                HudScreen.HOME -> Icons.Default.Dashboard
-                                HudScreen.CHAT -> Icons.Default.ChatBubble
-                                HudScreen.VOICE -> Icons.Default.Mic
-                                HudScreen.TOOLS -> Icons.Default.Apps
-                                HudScreen.SETTINGS -> Icons.Default.Settings
-                                else -> Icons.Default.Dashboard
-                            }
-
-                            NavigationBarItem(
-                                selected = selected,
-                                onClick = { viewModel.navigateTo(screen) },
-                                icon = {
-                                    Icon(
-                                        imageVector = icon,
-                                        contentDescription = screen.title,
-                                        tint = if (selected) CyanGlow else TextMuted
-                                    )
-                                },
-                                label = {
-                                    Text(
-                                        text = screen.title,
-                                        style = MaterialTheme.typography.labelSmall.copy(
-                                            color = if (selected) CyanGlow else TextMuted,
-                                            fontSize = 9.sp
-                                        )
-                                    )
-                                },
-                                colors = NavigationBarItemDefaults.colors(
-                                    indicatorColor = DeepBlueAccent.copy(alpha = 0.5f)
-                                ),
-                                modifier = Modifier.testTag("bottom_nav_${screen.tag}")
-                            )
-                        }
-                    }
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxSize()
+                ) {
+                    ScreenContent(currentScreen = currentScreen, viewModel = viewModel, isExpanded = true)
                 }
             }
         }

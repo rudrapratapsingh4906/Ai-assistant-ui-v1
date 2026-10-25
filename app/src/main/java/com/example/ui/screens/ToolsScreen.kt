@@ -87,7 +87,7 @@ fun ToolsScreen(
             )
         )
         Text(
-            text = "JARVIS Autonomous Subroutines",
+            text = "RAYA Autonomous Subroutines",
             style = MaterialTheme.typography.bodySmall.copy(color = TextMuted, fontSize = 11.sp)
         )
 

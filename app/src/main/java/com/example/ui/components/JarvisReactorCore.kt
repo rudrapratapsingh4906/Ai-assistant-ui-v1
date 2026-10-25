@@ -107,7 +107,7 @@ fun JarvisReactorCore(
     ) {
         // Reactor Circle Canvas Box
         Box(
-            modifier = Modifier.size(240.dp),
+            modifier = Modifier.size(195.dp),
             contentAlignment = Alignment.Center
         ) {
             // Background Glow Arc Canvas
@@ -233,13 +233,13 @@ fun JarvisReactorCore(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Psychology,
-                        contentDescription = "JARVIS Brain Core",
+                        contentDescription = "RAYA Brain Core",
                         tint = CyanGlow,
                         modifier = Modifier.size(38.dp)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "JARVIS",
+                        text = "RAYA",
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.Bold,
                             color = TextPrimary,

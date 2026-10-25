@@ -64,7 +64,7 @@ class JarvisViewModel(
             ChatMessage(
                 id = "m0",
                 sender = ChatSender.AI,
-                text = "Hello! I am your JARVIS AI Assistant initialized with Gemini 4 Argon High Thinking Mode. How may I assist your operations today?",
+                text = "Hello! I am your RAYA AI Assistant initialized with Gemini 4 Argon High Thinking Mode. How may I assist your operations today?",
                 thinkingProcess = "System booted. High thinking protocols active.",
                 timestamp = "10:20"
             )
@@ -83,9 +83,9 @@ class JarvisViewModel(
 
     private val _files = MutableStateFlow(
         listOf(
-            FileItemData("jarvis_core_dump.bin", "1.2 GB", "Today, 10:00", FileType.SYSTEM, "/sys/core/"),
+            FileItemData("raya_core_dump.bin", "1.2 GB", "Today, 10:00", FileType.SYSTEM, "/sys/core/"),
             FileItemData("system_architecture_diagram.png", "4.8 MB", "Yesterday", FileType.MEDIA, "/docs/images/"),
-            FileItemData("jarvis_subroutine_opt.kt", "128 KB", "2 days ago", FileType.CODE, "/src/ai/"),
+            FileItemData("raya_subroutine_opt.kt", "128 KB", "2 days ago", FileType.CODE, "/src/ai/"),
             FileItemData("encrypted_vault_keys.dat", "16 KB", "3 days ago", FileType.ARCHIVE, "/sec/keys/")
         )
     )

@@ -19,6 +19,7 @@ class MainActivity : ComponentActivity() {
         } catch (e: Throwable) {
             android.util.Log.w("MainActivity", "FirebaseApp auto-init deferred: ${e.message}")
         }
+        requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         enableEdgeToEdge()
         setContent {
             JarvisTheme {

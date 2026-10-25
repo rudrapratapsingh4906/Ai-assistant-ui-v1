@@ -132,7 +132,7 @@ fun JarvisTopBar(
                 .padding(horizontal = 16.dp, vertical = 6.dp)
         ) {
             Text(
-                text = "\"Hello, I'm your AI Assistant. How can I help you today?\"",
+                text = "\"Hello, I'm RAYA, your personal AI assistant. How can I help you today?\"",
                 style = MaterialTheme.typography.bodySmall.copy(
                     color = CyanAccent,
                     fontSize = 11.sp
@@ -221,7 +221,7 @@ fun JarvisSidebar(
 ) {
     Column(
         modifier = modifier
-            .width(220.dp)
+            .width(185.dp)
             .fillMaxHeight()
             .background(DarkBackground)
             .drawBehind {
@@ -393,7 +393,7 @@ fun JarvisFooter() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "JARVIS INTERFACE v1.0.0",
+            text = "RAYA INTERFACE v1.0.0",
             style = MaterialTheme.typography.labelSmall.copy(color = TextMuted, fontSize = 10.sp)
         )
         Text(

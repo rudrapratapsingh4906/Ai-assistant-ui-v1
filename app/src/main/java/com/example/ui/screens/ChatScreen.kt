@@ -162,7 +162,7 @@ fun ChatScreen(
         ) {
             PromptChip("Analyze System Health", onClick = { viewModel.sendChatMessage("Run complete system audit & diagnostic analysis.") })
             PromptChip("Optimize Code", onClick = { viewModel.sendChatMessage("Optimize my Kotlin architecture for minimum memory overhead.") })
-            PromptChip("Project Plan", onClick = { viewModel.sendChatMessage("Generate step-by-step roadmap for JARVIS v2.0.") })
+            PromptChip("Project Plan", onClick = { viewModel.sendChatMessage("Generate step-by-step roadmap for RAYA v2.0.") })
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -195,7 +195,7 @@ fun ChatScreen(
                     .testTag("chat_input_field"),
                 placeholder = {
                     Text(
-                        "Command JARVIS AI Core...",
+                        "Command RAYA AI Core...",
                         style = MaterialTheme.typography.bodyMedium.copy(color = TextMuted, fontSize = 13.sp)
                     )
                 },
@@ -279,7 +279,7 @@ private fun MessageBubble(message: ChatMessage) {
             if (!isUser) {
                 Icon(
                     imageVector = Icons.Default.SmartToy,
-                    contentDescription = "JARVIS AI",
+                    contentDescription = "RAYA AI",
                     tint = CyanGlow,
                     modifier = Modifier.size(16.dp)
                 )
